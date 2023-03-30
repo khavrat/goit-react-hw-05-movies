@@ -1,13 +1,27 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.7acaea2f.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.07d3183d.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.e80dac5c.js",
+    "static/js/152.5c3b7ec0.chunk.js": "/goit-react-hw-05-movies/static/js/152.5c3b7ec0.chunk.js",
+    "static/js/324.40687e38.chunk.js": "/goit-react-hw-05-movies/static/js/324.40687e38.chunk.js",
+    "static/js/435.8a1c3ddb.chunk.js": "/goit-react-hw-05-movies/static/js/435.8a1c3ddb.chunk.js",
+    "static/js/537.b32b2eb4.chunk.js": "/goit-react-hw-05-movies/static/js/537.b32b2eb4.chunk.js",
+    "static/js/966.9a5e9add.chunk.js": "/goit-react-hw-05-movies/static/js/966.9a5e9add.chunk.js",
+    "static/js/279.968c5919.chunk.js": "/goit-react-hw-05-movies/static/js/279.968c5919.chunk.js",
+    "static/js/691.0cd83017.chunk.js": "/goit-react-hw-05-movies/static/js/691.0cd83017.chunk.js",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.7acaea2f.css.map": "/goit-react-hw-05-movies/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/goit-react-hw-05-movies/static/js/main.07d3183d.js.map"
+    "main.e80dac5c.js.map": "/goit-react-hw-05-movies/static/js/main.e80dac5c.js.map",
+    "152.5c3b7ec0.chunk.js.map": "/goit-react-hw-05-movies/static/js/152.5c3b7ec0.chunk.js.map",
+    "324.40687e38.chunk.js.map": "/goit-react-hw-05-movies/static/js/324.40687e38.chunk.js.map",
+    "435.8a1c3ddb.chunk.js.map": "/goit-react-hw-05-movies/static/js/435.8a1c3ddb.chunk.js.map",
+    "537.b32b2eb4.chunk.js.map": "/goit-react-hw-05-movies/static/js/537.b32b2eb4.chunk.js.map",
+    "966.9a5e9add.chunk.js.map": "/goit-react-hw-05-movies/static/js/966.9a5e9add.chunk.js.map",
+    "279.968c5919.chunk.js.map": "/goit-react-hw-05-movies/static/js/279.968c5919.chunk.js.map",
+    "691.0cd83017.chunk.js.map": "/goit-react-hw-05-movies/static/js/691.0cd83017.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/js/main.e80dac5c.js"
   ]
 }
