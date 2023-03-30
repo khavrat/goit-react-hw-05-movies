@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Form, Button, Input } from '../components/SearchField.styled';
 
 const SearchField = ({ onSubmit }) => {
   const [searchField, setSearchField] = useState('');
@@ -18,9 +20,9 @@ const SearchField = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label htmlFor="searchField"></label>
-      <input
+      <Input
         type="text"
         autoComplete="off"
         autoFocus
@@ -28,10 +30,14 @@ const SearchField = ({ onSubmit }) => {
         name="searchField"
         value={searchField}
         onChange={e => setSearchField(e.target.value.toLowerCase())}
-      ></input>
-      <button type="submit">Search</button>
-    </form>
+      ></Input>
+      <Button type="submit">Search</Button>
+    </Form>
   );
+};
+
+SearchField.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchField;

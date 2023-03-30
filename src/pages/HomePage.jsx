@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-import getTrendingMovies from '../servises/getPopularMovies';
-import LoadingView from '../components/LoadingView';
+import getTrendingMovies from '../servises/api/getTrendingMovies';
 import { Link, useLocation } from 'react-router-dom';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const location = useLocation();
@@ -13,14 +11,10 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-
         const trendingMovies = await getTrendingMovies();
         setMovies(trendingMovies.results);
-        setLoading(false);
         setError('');
       } catch (error) {
-        setLoading(false);
         setError(error.message);
       }
     };
@@ -30,13 +24,10 @@ const HomePage = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
-  if (loading) {
-    return <LoadingView />;
-  }
   if (movies)
     return (
       <main>
-        <h2>This is HomePage with popularMovies</h2>
+        <h2>Trending today</h2>
         <ul>
           {movies.map(movie => {
             return (
@@ -48,7 +39,6 @@ const HomePage = () => {
             );
           })}
         </ul>
-        ;
       </main>
     );
 };

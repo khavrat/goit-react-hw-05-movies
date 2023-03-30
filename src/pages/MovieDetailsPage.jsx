@@ -1,11 +1,13 @@
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { useEffect, useState, useRef, Suspense } from 'react';
 import BackLink from '../components/Backlink';
-import getMovieDetails from '../servises/getMovieDetails';
+import getMovieDetails from '../servises/api/getMovieDetails';
+import LoadingView from '../components/LoadingView';
+import MovieDetails from '../components/MovieDetails';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
@@ -16,48 +18,26 @@ const MovieDetailsPage = () => {
     const fetchData = async () => {
       try {
         setError(null);
-        setLoading(true);
 
         const movieDetails = await getMovieDetails(movieId);
-
-        setLoading(true);
         setMovie(movieDetails);
       } catch (error) {
-        setLoading(false);
         setError(error.message);
       }
-      setLoading(false);
     };
     fetchData();
   }, [movieId]);
 
-
   return (
     <>
-      <BackLink to={backLinkHref.current}>Go back</BackLink>
-      {loading && <p>Loading...</p>}
+      <BackLink to={backLinkHref.current}>
+        <BsArrowLeft size={20} style={{ marginRight: '10px' }} />
+        Go back
+      </BackLink>
       {error && <p>Error: {error.message}</p>}
       {movie !== null && (
-        <section>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt="poster the film"
-          ></img>
-          <div>
-            <h3>{`${movie.title} (${movie.release_date.slice(0, 4)})`}</h3>
-            <p>
-              <span>User Score: </span>
-              {`${movie.vote_average}`}
-            </p>
-            <p>
-              <span>Overview: </span>
-              {`${movie.overview}`}
-            </p>
-            <p>
-              <span>Genres: </span>
-              {`${movie.genres.map(genre => genre.name).join(', ')}`}
-            </p>
-          </div>
+        <>
+          <MovieDetails movie={movie} />
           <ul>
             <li>
               <Link to="cast" state={{ from: location }}>
@@ -70,11 +50,11 @@ const MovieDetailsPage = () => {
               </Link>
             </li>
           </ul>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Outlet />
-          </Suspense>
-        </section>
+        </>
       )}
+      <Suspense fallback={<LoadingView />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

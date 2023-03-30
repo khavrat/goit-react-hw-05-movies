@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import getMovieReviews from '../servises/getMovieReviews';
+import PropTypes from 'prop-types';
+import getMovieReviews from '../servises/api/getMovieReviews';
 
 const Reviews = () => {
   const [reviews, setReview] = useState(null);
@@ -21,24 +22,28 @@ const Reviews = () => {
     };
     fetchReviews();
   }, [movieId]);
-    
-      return (
-        <>
-          {error && <p>Error: {error.message}</p>}
-          {reviews && reviews.length !==0 ? (
-            <ul>
-              {reviews.map(review => (
-                <li key={review.id}>
-                  <p>Author: {review.author}</p>
-                  <p>'{review.content}'</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>We have no reviews of this film</p>
-          )}
-        </>
-      );
+
+  return (
+    <section>
+      {error && <p>Error: {error.message}</p>}
+      {reviews && reviews.length !== 0 ? (
+        <ul>
+          {reviews.map(review => (
+            <li key={review.id}>
+              <p>Author: {review.author}</p>
+              <p>'{review.content}'</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>We have no reviews of this film</p>
+      )}
+    </section>
+  );
+};
+
+Reviews.propTypes = {
+  movieId: PropTypes.string,
 };
 
 export default Reviews;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import getMovieCredits from '../servises/getMovieCredits';
+import PropTypes from 'prop-types';
+import getMovieCredits from '../servises/api/getMovieCredits';
 
 const Cast = () => {
   const [credits, setCredits] = useState(null);
@@ -23,7 +24,7 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <>
+    <section>
       {error && <p>Error: {error.message}</p>}
       {credits && (
         <ul>
@@ -39,8 +40,12 @@ const Cast = () => {
           ))}
         </ul>
       )}
-    </>
+    </section>
   );
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string,
 };
 
 export default Cast;
