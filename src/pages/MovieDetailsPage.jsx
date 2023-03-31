@@ -1,9 +1,9 @@
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
-import { useEffect, useState, useRef, Suspense } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 import BackLink from '../components/Backlink';
 import getMovieDetails from '../servises/api/getMovieDetails';
-import LoadingView from '../components/LoadingView';
 import MovieDetails from '../components/MovieDetails';
+import UnderLayout from '../components/UnderLayout';
 import { BsArrowLeft } from 'react-icons/bs';
 
 const MovieDetailsPage = () => {
@@ -17,10 +17,9 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setError(null);
-
         const movieDetails = await getMovieDetails(movieId);
         setMovie(movieDetails);
+        setError(null);
       } catch (error) {
         setError(error.message);
       }
@@ -30,31 +29,16 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <BackLink to={backLinkHref.current}>
-        <BsArrowLeft size={20} style={{ marginRight: '10px' }} />
-        Go back
-      </BackLink>
-      {error && <p>Error: {error.message}</p>}
-      {movie !== null && (
-        <>
-          <MovieDetails movie={movie} />
-          <ul>
-            <li>
-              <Link to="cast" state={{ from: location }}>
-                Cast
-              </Link>
-            </li>
-            <li>
-              <Link to="reviews" state={{ from: location }}>
-                Reviews
-              </Link>
-            </li>
-          </ul>
-        </>
-      )}
-      <Suspense fallback={<LoadingView />}>
-        <Outlet />
-      </Suspense>
+      <>
+        {' '}
+        <BackLink to={backLinkHref.current}>
+          <BsArrowLeft size={20} style={{ marginRight: '10px' }} />
+          Go back
+        </BackLink>
+        {error && <p>Error: {error.message}</p>}
+        {movie !== null && <MovieDetails movie={movie} />}
+      </>
+      <UnderLayout />
     </>
   );
 };

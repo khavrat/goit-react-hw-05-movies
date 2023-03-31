@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const Title = styled.h2`
+margin-top: 0 ;
+margin-bottom: 20px;  
+padding-left: 12px;
+color: rgba(4, 55, 184, 1);
+`;
+
 export const List = styled.ul`
   list-style: none;
   padding: 0;

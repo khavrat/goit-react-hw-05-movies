@@ -30,7 +30,7 @@ const SharedLayout = () => {
             </NavList>
           </nav>
         </Header>
-        <Suspense fallback={<LoadingView />}>
+        <Suspense fallback={<LoadingView size={10} />}>
           <Outlet />
         </Suspense>
       </Container>

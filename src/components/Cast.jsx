@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import getMovieCredits from '../servises/api/getMovieCredits';
+import {
+  Section,
+  CreditList,
+  CreditItem,
+  ActorName,
+  ActorChar,
+} from '../components/Cast.styled';
 
 const Cast = () => {
   const [credits, setCredits] = useState(null);
@@ -24,23 +31,35 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <section>
+    <Section>
       {error && <p>Error: {error.message}</p>}
-      {credits && (
-        <ul>
-          {credits.slice(0, 6).map(actor => (
-            <li key={actor.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
-                alt={actor.name}
-              />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character}</p>
-            </li>
+      {credits && credits.length !== 0 ? (
+        <CreditList>
+          {credits.slice(0, 10).map(actor => (
+            <CreditItem key={actor.id}>
+              {actor.profile_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                  alt={actor.name}
+                />
+              ) : (
+                <img
+                  src={`http://dummyimage.com/200x300/d5dff2.jpg&text=No+fhoto+${actor.name}`}
+                  alt={actor.name}
+                />
+              )}
+              <ActorName>{actor.name}</ActorName>
+              <ActorChar>
+                Character: <br />
+                {actor.character}
+              </ActorChar>
+            </CreditItem>
           ))}
-        </ul>
+        </CreditList>
+      ) : (
+        <ActorChar>We don't have a cast list for this movie</ActorChar>
       )}
-    </section>
+    </Section>
   );
 };
 
