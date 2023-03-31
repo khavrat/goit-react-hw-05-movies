@@ -1,9 +1,12 @@
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, lazy } from 'react';
 import { useSearchParams, useLocation, Outlet } from 'react-router-dom';
 import SearchField from 'components/searchField/SearchField';
 import getSearchMovies from '../servises/api/getSearchMovie';
 import LoadingView from '../components/loading/LoadingView';
-import MovieList from 'components/movieSearchList/MovieSearchList';
+
+const MovieList = lazy(() =>
+  import('components/movieSearchList/MovieSearchList')
+);
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
