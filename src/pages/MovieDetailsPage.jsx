@@ -1,9 +1,9 @@
 import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
-import BackLink from '../components/Backlink';
+import BackLink from '../components/backLink/Backlink';
 import getMovieDetails from '../servises/api/getMovieDetails';
-import MovieDetails from '../components/MovieDetails';
-import UnderLayout from '../components/UnderLayout';
+import MovieDetails from '../components/movieDetails/MovieDetails';
+import UnderLayout from '../components/underLayout/UnderLayout';
 import { BsArrowLeft } from 'react-icons/bs';
 
 const MovieDetailsPage = () => {

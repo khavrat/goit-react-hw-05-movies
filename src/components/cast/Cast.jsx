@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import getMovieCredits from '../servises/api/getMovieCredits';
+import getMovieCredits from '../../servises/api/getMovieCredits';
 import {
   Section,
   CreditList,
   CreditItem,
   ActorName,
   ActorChar,
-} from '../components/Cast.styled';
+} from './Cast.styled';
 
 const Cast = () => {
   const [credits, setCredits] = useState(null);
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
-
   useEffect(() => {
     const fetchCtedits = async () => {
       try {
@@ -64,7 +63,7 @@ const Cast = () => {
 };
 
 Cast.propTypes = {
-  movieId: PropTypes.string,
+  movieId: PropTypes.string
 };
 
 export default Cast;

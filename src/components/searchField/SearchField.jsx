@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Input } from '../components/SearchField.styled';
+import { Form, Button, Input } from './SearchField.styled';
 
 const SearchField = ({ onSubmit }) => {
   const [searchField, setSearchField] = useState('');
@@ -16,7 +16,7 @@ const SearchField = ({ onSubmit }) => {
     } else {
       onSubmit(searchField);
     }
-    reset()
+    reset();
   };
 
   return (

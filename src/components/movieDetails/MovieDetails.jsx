@@ -1,10 +1,11 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import {
   InfoMovie,
   InfoTitle,
   InfoName,
   InfoText,
-} from '../components/MovieDetails.styled';
+} from './MovieDetails.styled';
 
 const MovieDetails = ({ movie }) => {
   return (
@@ -14,7 +15,10 @@ const MovieDetails = ({ movie }) => {
         alt="poster the film"
       ></img>
       <div>
-        <InfoTitle>{`${movie.title} (${movie.release_date.slice(0, 4)})`}</InfoTitle>
+        <InfoTitle>{`${movie.title} (${movie.release_date.slice(
+          0,
+          4
+        )})`}</InfoTitle>
         <InfoText>
           <InfoName>User Score: </InfoName>
           {`${movie.vote_average}`}
@@ -32,4 +36,7 @@ const MovieDetails = ({ movie }) => {
   );
 };
 
+MovieDetails.propTyps = {
+  movie: PropTypes.object.isRequared
+};
 export default MovieDetails;

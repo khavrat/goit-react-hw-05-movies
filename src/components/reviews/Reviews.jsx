@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import getMovieReviews from '../servises/api/getMovieReviews';
+import getMovieReviews from '../../servises/api/getMovieReviews';
 import {
   Section,
   ReviewsList,
   ReviewItem,
   ReviewerName,
-  ReviewContent
-} from '../components/Reviws.styled';
+  ReviewContent,
+} from './Reviws.styled';
 
 const Reviews = () => {
   const [reviews, setReview] = useState(null);
@@ -50,7 +50,7 @@ const Reviews = () => {
 };
 
 Reviews.propTypes = {
-  movieId: PropTypes.string,
+  movieId: PropTypes.string
 };
 
 export default Reviews;

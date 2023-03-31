@@ -1,9 +1,9 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useLocation, Outlet } from 'react-router-dom';
-import SearchField from 'components/SearchField';
+import SearchField from 'components/searchField/SearchField';
 import getSearchMovies from '../servises/api/getSearchMovie';
-import LoadingView from '../components/LoadingView';
-import MovieList from 'components/MovieList';
+import LoadingView from '../components/loading/LoadingView';
+import MovieList from 'components/movieSearchList/MovieSearchList';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
@@ -53,10 +53,8 @@ const MoviesPage = () => {
       {!showSearchField && (
         <>
           <SearchField onSubmit={handleSubmit} />
-            {error && <p>Error: {error.message}</p>}
-            {movies !== null && (
-              <MovieList movies={movies} />
-            )}
+          {error && <p>Error: {error.message}</p>}
+          {movies !== null && <MovieList movies={movies} />}
         </>
       )}
       <Suspense fallback={<LoadingView />}>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import getTrendingMovies from '../servises/api/getTrendingMovies';
-import MovieTrendingList from '../components/MovieTrendingList';
+import MovieTrendingList from '../components/movieTrending/MovieTrendingList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
@@ -19,12 +19,12 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-    return (
-      <main>
-        {error && <p>Error: {error.message}</p>}
-        {movies !== null && <MovieTrendingList movies={movies} />}
-      </main>
-    );
+  return (
+    <main>
+      {error && <p>Error: {error.message}</p>}
+      {movies !== null && <MovieTrendingList movies={movies} />}
+    </main>
+  );
 };
 
 export default HomePage;
